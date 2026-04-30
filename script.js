@@ -7,11 +7,9 @@ async function fetchValues() {
         const lines = text.trim().split('\n');
         const container = document.getElementById('market-container');
 
-        // Clear container to prevent duplicates
         container.innerHTML = '';
 
         lines.forEach(line => {
-            // Ignore empty lines or comments
             if (!line.trim() || line.startsWith('#')) return;
 
             const [name, price, demand, stock, img] = line.split('|').map(item => item.trim());
@@ -19,16 +17,10 @@ async function fetchValues() {
             const card = document.createElement('div');
             card.className = 'card';
             
-            // 3D Tilt Settings for the Cards
-            card.setAttribute('data-tilt', '');
-            card.setAttribute('data-tilt-max', '15'); 
-            card.setAttribute('data-tilt-speed', '400');
-            card.setAttribute('data-tilt-glare', 'true');
-            card.setAttribute('data-tilt-max-glare', '0.3');
-            card.setAttribute('data-tilt-perspective', '1000');
-
+            // Note: We move the configuration into the VanillaTilt.init 
+            // call below for better control over the "Pro" effects.
             card.innerHTML = `
-                <img src="textures/${img}" onerror="this.src='https://via.placeholder.com/120?text=No+Img'">
+                <img src="textures/${img}" onerror="this.src='https://via.placeholder.com/140?text=No+Img'">
                 <h3>${name}</h3>
                 <div class="price">💰 ${price}</div>
                 <div class="demand-tag">${demand}</div>
@@ -38,22 +30,36 @@ async function fetchValues() {
             container.appendChild(card);
         });
 
-        // 1. Initialize 3D effect on the Item Cards
-        VanillaTilt.init(document.querySelectorAll(".card"));
+        // 1. Advanced 3D Tilt for Item Cards
+        VanillaTilt.init(document.querySelectorAll(".card"), {
+            max: 20,                // More tilt for better 3D depth
+            speed: 1000,            // Faster, smoother transition
+            perspective: 1000,      // Creates a stronger sense of distance
+            scale: 1.05,            // Card grows slightly on hover
+            glare: true,            // Enables the digital glare
+            "max-glare": 0.4,       // Brightness of the glare
+            gyroscope: true,        // Allows mobile users to tilt their phone to see 3D
+            gyroscopeMinAngleX: -45,
+            gyroscopeMaxAngleX: 45,
+            gyroscopeMinAngleY: -45,
+            gyroscopeMaxAngleY: 45,
+        });
 
-        // 2. Initialize 3D effect on Background Shapes (The "Shards")
-        // We set these to move slightly differently for a parallax feel
+        // 2. Parallax Effect for Background Shapes
         VanillaTilt.init(document.querySelectorAll(".shape"), {
             max: 10,
-            speed: 1000,
+            speed: 2000,
             perspective: 2000,
-            "mouse-event-element": document.body // Makes them react even if mouse isn't directly over them
+            "mouse-event-element": document.body,
+            reverse: true           // Background moves opposite to mouse for depth
         });
 
     } catch (error) {
         console.error("Techblox Market Error:", error);
+        // Visual feedback if the file is missing
+        document.getElementById('market-container').innerHTML = 
+            `<p style="color:red; text-align:center;">Failed to load market data. Check values.txt</p>`;
     }
 }
 
-// Ensure the function runs after the page has loaded
 window.onload = fetchValues;
