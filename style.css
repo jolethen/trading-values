@@ -1,0 +1,84 @@
+body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding-bottom: 50px;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(to bottom, #1a1a1a, #0f0f0f);
+}
+
+h1 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 4rem;
+    letter-spacing: 3px;
+    margin: 0;
+    color: #00d4ff;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #00d4ff;
+    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.2);
+}
+
+.card img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffd700; /* Gold */
+    margin: 5px 0;
+}
+
+.demand-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    background: #333;
+    margin-top: 10px;
+}
+
+.stock {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 8px;
+      }
