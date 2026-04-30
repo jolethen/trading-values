@@ -1,0 +1,8 @@
+# Techblox Value List - Edit this file to update the site
+# Format: Name | Price | Demand | Stock | Image_File
+
+Mithril Ingot | 15,000 | Extreme | 42 | mithril.png
+God Spear | 120,000 | High | 5 | god_spear.png
+Healing Crystal | 2,500 | Medium | 150 | crystal.png
+Iron Scrap | 450 | Low | 1,200 | iron.png
+Dragon Heart | 85,000 | Very High | 2 | heart.png
