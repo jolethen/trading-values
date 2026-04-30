@@ -5,18 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Techblox 3D Market</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-    <!-- Tilt Library -->
+    <!-- Google Fonts for that Gaming Aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Vanilla Tilt Library for the 3D effect -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 </head>
 <body>
+
+    <!-- 1. Background Visuals -->
+    <div class="parallax-bg">
+        <div class="shape s1" data-tilt data-tilt-speed="1000"></div>
+        <div class="shape s2" data-tilt data-tilt-speed="800"></div>
+        <div class="shape s3" data-tilt data-tilt-speed="1200"></div>
+    </div>
+
+    <!-- 2. Ambient Glow Lights -->
+    <div class="bg-glow" style="top: 10%; left: 15%; background: #00d4ff;"></div>
+    <div class="bg-glow" style="bottom: 10%; right: 10%; background: #7000ff;"></div>
+
+    <!-- 3. Page Content -->
     <header>
         <h1>TECHBLOX INDEX</h1>
         <p>Interactive 3D Trading Hub</p>
     </header>
 
-    <div class="container" id="market-container"></div>
+    <main class="container" id="market-container">
+        <!-- The script.js will inject item cards here -->
+    </main>
 
+    <!-- 4. Logic Script -->
     <script src="script.js"></script>
 </body>
 </html>
